@@ -3,6 +3,7 @@
 services automatically from existing databases."""
 
 import argparse
+from colorama import just_fix_windows_console
 from sandman2 import get_app
 
 
@@ -53,6 +54,7 @@ def main():
         default=False)
 
 
+    just_fix_windows_console()  # safe to run on non-Windows
     args = parser.parse_args()
     app = get_app(args.URI, read_only=args.read_only, schema=args.schema)
     if args.enable_cors:
